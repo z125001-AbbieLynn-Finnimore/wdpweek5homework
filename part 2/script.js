@@ -22,8 +22,6 @@ function showQuestion() {
   questionText.textContent = q.question;
 
    //INPUT YOUR CODE HERE
-   //HINT: Loop through each option for the current question
-  // TODO:
   q.options.forEach((option, index) => {
     const btn = document.createElement("button");
     btn.textContent = option;
@@ -50,12 +48,6 @@ function clearOptions() {
   optionsContainer.innerHTML = "";
   nextBtn.disabled = true;
 }
-  // INPUT YOUR CODE HERE
-  // HINT
-  // 1. Clear the contents of the options container
-  // 2. Disable the Next button so users can't skip ahead
-
-
 nextBtn.addEventListener("click", () => {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
@@ -69,13 +61,7 @@ nextBtn.addEventListener("click", () => {
     document.getElementById("question-count").style.display = "none";
     document.getElementById("result").style.display = "block";
     document.getElementById("result").innerHTML = `<h2>Your score: ${score} / ${questions.length}</h2>`;
-    
 }
-  // INPUT YOUR CODE HERE
-  // HINT
-  // 1. Move to the next question by increasing the question index
-  // 2. If there are questions left, show the next one
-  // 3. Otherwise, call a function to show the final result
 });
 
 
