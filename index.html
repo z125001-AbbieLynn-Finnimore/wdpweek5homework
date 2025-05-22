@@ -40,7 +40,7 @@
 <body>
 
   <h1>Quote generator homework</h1>
-  <h2>Create by Gift sensei </h2> <!-- Change XXXX to your name and student ID-->
+  <h2>Create by z125001 Abbie Lynn Finnimore </h2> 
 
   <div id="quoteBox">
     <p id="quote">Click the button to get a quote!</p>
@@ -53,7 +53,11 @@
     Web Design and Programming — Shibaura Institute of Technology — Spring 2025
   </footer>
 
+  
+
   <script>
+
+
     const quoteText = document.getElementById("quote");
     const authorText = document.getElementById("author");
     const newQuoteBtn = document.getElementById("newQuoteBtn");
@@ -61,23 +65,27 @@
     function getQuote() {
         quoteText.textContent = "Loading quote...";
         authorText.textContent = "";
+
         fetch("quotes.json")
             .then(response => response.json())
             .then(data => {
+                newQuoteBtn.addEventListener("click", getQuote);
                 const randomIndex = Math.floor(Math.random() * data.length);
                 const quoteObj = data[randomIndex];
                 quoteText.textContent = `"${quoteObj.quote}"`;
                 authorText.textContent = `— ${quoteObj.author}`;
-    })
+            })
             .catch(error => {
                 quoteText.textContent = "Failed to load quote.";
                 authorText.textContent = "";
-                console.error("Error fetching quotes:", error);
-    });
-}
+                console.error("Error fetching quote:", error);
+            });
+    }
 
-  newQuoteBtn.addEventListener("click", getQuote);
-  getQuote(); // Load a quote on page load
+    
+
+    // Load a quote on page load
+    window.onload = getQuote;
 </script>
 
 </body>
